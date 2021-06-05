@@ -1,4 +1,4 @@
-module bookstore_oauth-go
+module bookstore_oauth_go
 
 go 1.16
 
