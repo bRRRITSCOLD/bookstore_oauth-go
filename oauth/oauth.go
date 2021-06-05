@@ -7,8 +7,8 @@ import (
 	"strconv"
 	"strings"
 
-	http_client "github.com/bRRRITSCOLD/bookstore_oauth-go/clients/http"
-	errors_utils "github.com/bRRRITSCOLD/bookstore_oauth-go/utils/errors"
+	http_client "github.com/bRRRITSCOLD/bookstore_oauth-go/oauth-clients/http"
+	errors_utils "github.com/bRRRITSCOLD/bookstore_oauth-go/oauth-utils/errors"
 )
 
 const (
