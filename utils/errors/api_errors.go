@@ -1,4 +1,4 @@
-package errors_utils
+package oauth_errors_utils
 
 import "net/http"
 

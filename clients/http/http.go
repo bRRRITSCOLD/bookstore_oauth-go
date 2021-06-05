@@ -1,4 +1,4 @@
-package http_client
+package oauth_http_client
 
 import "github.com/go-resty/resty/v2"
 
