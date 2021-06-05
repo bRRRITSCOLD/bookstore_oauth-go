@@ -1,13 +1,14 @@
 package oauth
 
 import (
-	http_client "bookstore_oauth-go/clients/http"
-	errors_utils "bookstore_oauth-go/utils/errors"
 	"encoding/json"
 	"fmt"
 	"net/http"
 	"strconv"
 	"strings"
+
+	http_client "github.com/bRRRITSCOLD/bookstore_oauth-go/clients/http"
+	errors_utils "github.com/bRRRITSCOLD/bookstore_oauth-go/utils/errors"
 )
 
 const (
