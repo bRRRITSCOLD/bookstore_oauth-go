@@ -30,8 +30,8 @@ type oAuthInterface interface {
 
 type accessToken struct {
 	AccessToken string `json:"accessToken"`
-	UserID      string `json:"userId"`
-	ClientID    string `json:"clientId"`
+	UserID      int64  `json:"userId"`
+	ClientID    int64  `json:"clientId"`
 }
 
 func IsPublic(request *http.Request) bool {
@@ -82,6 +82,9 @@ func AuthenticateRequest(request *http.Request) *errors_utils.APIError {
 
 	getAccessTokenResponse, getAccessTokenErr := getAccessToken(at)
 	if getAccessTokenErr != nil {
+		if getAccessTokenErr.Status == http.StatusNotFound {
+			return nil
+		}
 		return getAccessTokenErr
 	}
 
