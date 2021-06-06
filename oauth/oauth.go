@@ -8,7 +8,7 @@ import (
 	"strings"
 
 	http_client "github.com/bRRRITSCOLD/bookstore_oauth-go/oauth-clients/http"
-	errors_utils "github.com/bRRRITSCOLD/bookstore_oauth-go/oauth-utils/errors"
+	errors_utils "github.com/bRRRITSCOLD/bookstore_utils-go/errors"
 )
 
 const (
