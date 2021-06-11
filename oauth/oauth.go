@@ -68,7 +68,7 @@ func GetClientID(request *http.Request) int64 {
 	return clientId
 }
 
-func AuthenticateRequest(request *http.Request) *errors_utils.APIError {
+func AuthenticateRequest(request *http.Request) errors_utils.APIError {
 	if request == nil {
 		return nil
 	}
@@ -82,7 +82,7 @@ func AuthenticateRequest(request *http.Request) *errors_utils.APIError {
 
 	getAccessTokenResponse, getAccessTokenErr := getAccessToken(at)
 	if getAccessTokenErr != nil {
-		if getAccessTokenErr.Status == http.StatusNotFound {
+		if getAccessTokenErr.Status() == http.StatusNotFound {
 			return nil
 		}
 		return getAccessTokenErr
@@ -103,7 +103,7 @@ func cleanRequest(request *http.Request) {
 	request.Header.Del(HEADERS_X_CALLER_ID)
 }
 
-func getAccessToken(at string) (*accessToken, *errors_utils.APIError) {
+func getAccessToken(at string) (*accessToken, errors_utils.APIError) {
 	client := http_client.GetHTTPClient()
 
 	endpoint := fmt.Sprintf(OAUTH_API_OAUTH_ACCESS_TOKEN_GET_ENDPOINT, at)
@@ -114,35 +114,28 @@ func getAccessToken(at string) (*accessToken, *errors_utils.APIError) {
 		SetHeader("Accept", "application/json").
 		Get(url)
 	if err != nil {
-		return nil, &errors_utils.APIError{
-			Status:  http.StatusInternalServerError,
-			Message: "unable to get access token",
-		}
+		return nil, errors_utils.NewInternalServerAPIError("unable to get access token", nil)
 	}
 	body := resp.Body()
 
 	if resp.StatusCode() > 299 {
 		var apiErr errors_utils.APIError
-		if body != nil {
-			err := json.Unmarshal(body, &apiErr)
-			if err != nil {
-				return nil, &errors_utils.APIError{
-					Status:  http.StatusInternalServerError,
-					Message: "invalid error response when getting access token",
-				}
-			}
-			s := string(body)
-			fmt.Println(s) // ABC€
-			return nil, &apiErr
+		apiErr, err := errors_utils.NewAPIErrorFromBytes(body)
+		if err != nil {
+			return nil, errors_utils.NewInternalServerAPIError(
+				"invalid error response when getting access token",
+				err,
+			)
 		}
+		return nil, apiErr
 	}
 
 	var foundAccessToken accessToken
 	if err := json.Unmarshal(body, &foundAccessToken); err != nil {
-		return nil, &errors_utils.APIError{
-			Status:  http.StatusInternalServerError,
-			Message: "error when trying to unmarshal access token data",
-		}
+		return nil, errors_utils.NewInternalServerAPIError(
+			"error when trying to unmarshal access token data",
+			err,
+		)
 	}
 
 	return &foundAccessToken, nil
