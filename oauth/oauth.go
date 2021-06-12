@@ -82,9 +82,9 @@ func AuthenticateRequest(request *http.Request) errors_utils.APIError {
 
 	getAccessTokenResponse, getAccessTokenErr := getAccessToken(at)
 	if getAccessTokenErr != nil {
-		if getAccessTokenErr.Status() == http.StatusNotFound {
-			return nil
-		}
+		// if getAccessTokenErr.Status() == http.StatusNotFound {
+		// 	return nil
+		// }
 		return getAccessTokenErr
 	}
 
