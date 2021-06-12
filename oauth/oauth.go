@@ -116,10 +116,10 @@ func getAccessToken(at string) (*accessToken, errors_utils.APIError) {
 	if err != nil {
 		return nil, errors_utils.NewInternalServerAPIError("unable to get access token", nil)
 	}
+
 	body := resp.Body()
 
 	if resp.StatusCode() > 299 {
-		var apiErr errors_utils.APIError
 		apiErr, err := errors_utils.NewAPIErrorFromBytes(body)
 		if err != nil {
 			return nil, errors_utils.NewInternalServerAPIError(
