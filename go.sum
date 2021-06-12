@@ -6,6 +6,8 @@ github.com/bRRRITSCOLD/bookstore_utils-go v0.0.0-20210612121045-ca5bbfaf1651 h1:
 github.com/bRRRITSCOLD/bookstore_utils-go v0.0.0-20210612121045-ca5bbfaf1651/go.mod h1:570txi494oGJSXwRRFK++uL/32aVB6oHqHw172yz6pw=
 github.com/bRRRITSCOLD/bookstore_utils-go v0.0.0-20210612173429-dab0f11d65fc h1:yCaITpyGx5fXNoIxMGJ56d3iueEsOXJ7mVCCKniX+0Y=
 github.com/bRRRITSCOLD/bookstore_utils-go v0.0.0-20210612173429-dab0f11d65fc/go.mod h1:570txi494oGJSXwRRFK++uL/32aVB6oHqHw172yz6pw=
+github.com/bRRRITSCOLD/bookstore_utils-go v0.0.0-20210612180122-3727f9c5a952 h1:owDtBcACl2cu/Y5kYC+quGOnWl5Z2AEmNP/t9rHV8tI=
+github.com/bRRRITSCOLD/bookstore_utils-go v0.0.0-20210612180122-3727f9c5a952/go.mod h1:570txi494oGJSXwRRFK++uL/32aVB6oHqHw172yz6pw=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/go-resty/resty/v2 v2.6.0 h1:joIR5PNLM2EFqqESUjCMGXrWmXNHEU9CEiK813oKYS4=
